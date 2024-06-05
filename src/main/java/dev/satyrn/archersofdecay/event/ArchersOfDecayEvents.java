@@ -15,7 +15,6 @@ import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
@@ -123,7 +122,7 @@ public class ArchersOfDecayEvents implements Listener {
             final Location location = arrow.getLocation();
             this.plugin.getLogger()
                     .log(Level.FINER, "[Events] Wither skeleton fired arrow at x:{0}, y:{1}, z:{2} in world {3}; applying Wither effect at level {4} for {5} ticks.", new Object[]{location.getX(), location.getY(), location.getZ(), arrow.getWorld().getName(), effectLevel, duration});
-            arrow.setBasePotionData(new PotionData(PotionType.UNCRAFTABLE));
+            arrow.setBasePotionType(PotionType.UNCRAFTABLE); //arrow.setBasePotionData(new PotionData(PotionType.UNCRAFTABLE));
             arrow.addCustomEffect(new PotionEffect(PotionEffectType.WITHER, duration, effectLevel), true);
             arrow.setColor(Color.BLACK);
         }
@@ -214,7 +213,7 @@ public class ArchersOfDecayEvents implements Listener {
         if (this.configuration.dropArrows.dropTippedArrows.value() && duration > 0 && effectLevel >= 0) {
             arrows = new ItemStack(Material.TIPPED_ARROW, count);
             if (arrows.getItemMeta() instanceof final PotionMeta potionMeta) {
-                potionMeta.setBasePotionData(new PotionData(PotionType.UNCRAFTABLE));
+                potionMeta.setBasePotionType(PotionType.UNCRAFTABLE); //potionMeta.setBasePotionData(new PotionData(PotionType.UNCRAFTABLE));
                 potionMeta.addCustomEffect(new PotionEffect(PotionEffectType.WITHER, duration, effectLevel), true);
                 potionMeta.setColor(Color.BLACK);
                 arrows.setItemMeta(potionMeta);
