@@ -11,6 +11,7 @@ import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
+import org.bukkit.generator.structure.Structure;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
@@ -31,7 +32,7 @@ import java.util.logging.Level;
  * @author Isabel Maskrey
  * @since 0.0.0-SNAPSHOT
  */
-@SuppressWarnings("ClassCanBeRecord")
+
 public class ArchersOfDecayEvents implements Listener {
     // The plugin.
     private final @NotNull Plugin plugin;
@@ -68,18 +69,19 @@ public class ArchersOfDecayEvents implements Listener {
         }
         // Only spawn in the nether.
         final World world = event.getEntity().getWorld();
-        if (world.getEnvironment() != World.Environment.NETHER) {
+        /*if (world.getEnvironment() != World.Environment.NETHER) {
             return;
         }
         final double spawnChance = this.configuration.spawnChances.value(world.getDifficulty());
         if (spawnChance <= 0) {
             return;
-        }
+        }*/
         final Location location = event.getLocation();
-        if (Math.random() < spawnChance) {
+        //if (Math.random() < spawnChance) {
+        if (!location.getChunk().getStructures(Structure.FORTRESS).isEmpty()) {
             event.setCancelled(true);
             this.plugin.getLogger()
-                    .log(Level.FINER, "[Events] Replaced {0} with wither skeleton at x:{1}, y:{2}, z:{3} in world {4} with a chance of {5}%", new Object[]{event.getEntity().getType(), location.getX(), location.getY(), location.getZ(), world.getName(), spawnChance * 100});
+                    .log(Level.FINER, "[Events] Replaced {0} with wither skeleton at x:{1}, y:{2}, z:{3} in world {4} because of being in a fortress.", new Object[]{event.getEntity().getType(), location.getX(), location.getY(), location.getZ(), world.getName()});
 
             final @NotNull Optional<Skeleton> skeletonResult = Cast.as(Skeleton.class, event.getEntity());
             if (skeletonResult.isEmpty()) {
