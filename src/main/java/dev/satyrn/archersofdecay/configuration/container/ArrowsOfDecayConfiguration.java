@@ -2,9 +2,6 @@ package dev.satyrn.archersofdecay.configuration.container;
 
 import dev.satyrn.archersofdecay.configuration.Configuration;
 import dev.satyrn.papermc.api.configuration.v1.BooleanNode;
-import dev.satyrn.papermc.api.configuration.v1.ConfigurationContainer;
-import dev.satyrn.papermc.api.configuration.v1.ConfigurationNode;
-import dev.satyrn.papermc.api.configuration.v1.IntegerNode;
 import org.jetbrains.annotations.NotNull;
 
 /**

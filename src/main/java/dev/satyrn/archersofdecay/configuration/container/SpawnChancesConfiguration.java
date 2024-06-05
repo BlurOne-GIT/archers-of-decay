@@ -3,7 +3,6 @@ package dev.satyrn.archersofdecay.configuration.container;
 import dev.satyrn.papermc.api.configuration.v1.*;
 import org.bukkit.Difficulty;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * Spawn chances configuration options.

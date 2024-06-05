@@ -3,9 +3,6 @@ package dev.satyrn.archersofdecay.configuration.container;
 import dev.satyrn.papermc.api.configuration.v1.*;
 import org.bukkit.Difficulty;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.Objects;
 
 /**
  * The configuration of the effect duration applied to arrows fired by wither skeleton archers.
